@@ -5,11 +5,13 @@
     const handlebars = require('express-handlebars')
     const bodyParser = require('body-parser')
 
+    const path = require('path')
     //importando o arquivo de rotas
     const admin = require('./routes/admin')
     //const mongoose = require('mongoose')
 
-
+    //public -> configurar os ficheiros estaticos como css e javascripts
+    app.use(express.static(path.join(__dirname, "public")))
 //configurações
     //body-parser 
         app.use(bodyParser.urlencoded({extended:true}))
