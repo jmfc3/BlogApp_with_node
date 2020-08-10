@@ -4,6 +4,9 @@
 
     const handlebars = require('express-handlebars')
     const bodyParser = require('body-parser')
+
+    //importando o arquivo de rotas
+    const admin = require('./routes/admin')
     //const mongoose = require('mongoose')
 
 
@@ -16,10 +19,9 @@
         app.set('view engine', 'handlebars')
     //mongoose
 //rotas
-
-
+    app.use('/admin', admin)
 //outros
     const PORT = 8081
-    app.listen(8881, () => {
+    app.listen(8081, () => {
         console.log("O Servidor está a funcionar!!!")
     })
