@@ -8,7 +8,8 @@
     const path = require('path')
     //importando o arquivo de rotas
     const admin = require('./routes/admin')
-    //const mongoose = require('mongoose')
+    //importando o modulo do mongoose que trabalha com o banco de dados mongoDB
+    const mongoose = require('mongoose')
 
     //public -> configurar os ficheiros estaticos como css e javascripts
     app.use(express.static(path.join(__dirname, "public")))
@@ -20,6 +21,14 @@
         app.engine('handlebars', handlebars({defaultLayout: 'main'}))
         app.set('view engine', 'handlebars')
     //mongoose
+    mongoose.connect("mongoDB://localhost/blogapp", {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    }).then(() => {
+        console.log("O banco de dados esta funcionando corretamente")
+    }).catch((err) => {
+        console.log('Erro: ' + err)
+    })
 //rotas
     app.use('/admin', admin)
 //outros
