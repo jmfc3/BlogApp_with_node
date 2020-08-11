@@ -21,7 +21,7 @@
         app.engine('handlebars', handlebars({defaultLayout: 'main'}))
         app.set('view engine', 'handlebars')
     //mongoose
-    mongoose.connect("mongoDB://localhost/blogapp", {
+    mongoose.connect("mongodb://localhost/blogapp", {
         useNewUrlParser: true,
         useUnifiedTopology: true
     }).then(() => {
