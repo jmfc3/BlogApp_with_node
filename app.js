@@ -11,14 +11,27 @@
     //importando o modulo do mongoose que trabalha com o banco de dados mongoDB
     const mongoose = require('mongoose')
 
+    //importando os modulos de sessoes 
+    const session = require('express-session')
+    const flash = require('connect-flash')
     //public -> configurar os ficheiros estaticos como css e javascripts
     app.use(express.static(path.join(__dirname, "public")))
-    //declaração um middleare
-    app.use((req, res, next) => {
-        console.log('Eu sou um middleare')
-        next()
-    })
+  
 //configurações
+    //sessão
+        app.use(session({
+            secret: "cursodenode",
+            resave: true,
+            saveUninitialized: true
+        }))
+        app.use(flash())
+    //middleware
+        app.use((req, res, next) => {
+            //declarando variaveis globais
+            res.locals.success_msg = req.flash('Success_msg')
+            res.locals.error_msg = req.flash('error_msg')
+            next()
+        })
     //body-parser 
         app.use(bodyParser.urlencoded({extended:true}))
         app.use(bodyParser.json())
