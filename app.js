@@ -13,6 +13,11 @@
 
     //public -> configurar os ficheiros estaticos como css e javascripts
     app.use(express.static(path.join(__dirname, "public")))
+    //declaração um middleare
+    app.use((req, res, next) => {
+        console.log('Eu sou um middleare')
+        next()
+    })
 //configurações
     //body-parser 
         app.use(bodyParser.urlencoded({extended:true}))
