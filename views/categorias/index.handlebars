@@ -1,0 +1,21 @@
+<h4>Categorias: </h4>
+{{#each categorias}}
+    <div class="card">
+        <div class="card-body">
+            <div class="row align-items-center">
+                <div class="col col-lg-auto">
+                    <h5 class="card-title ">{{nome}}</h5>
+                </div>
+                <div class="col-sm">
+                    <a href="/categorias/{{slug}}" class="card-link">
+                        <button type="button" class="btn btn-info">Ver todos os posts</button>
+                    </a>
+                </div>
+            </div>
+            
+            
+        </div>
+    </div>
+{{else}}
+
+{{/each}}
